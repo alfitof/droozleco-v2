@@ -1,4 +1,5 @@
 <template>
+  <!-- Nav wrapper — hanya setinggi navbar, bukan fullscreen -->
   <nav
     ref="navbar"
     class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
@@ -38,7 +39,7 @@
 
       <!-- Right side -->
       <div class="flex items-center gap-4 shrink-0 relative z-50">
-        <!-- Search bar inline — desktop -->
+        <!-- Search inline — desktop only -->
         <div class="hidden md:flex items-center">
           <Transition name="search-expand">
             <div
@@ -74,8 +75,6 @@
               </button>
             </div>
           </Transition>
-
-          <!-- Search icon button -->
           <button
             v-if="!searchOpen"
             @click="openSearch"
@@ -127,7 +126,7 @@
           </span>
         </NuxtLink>
 
-        <!-- Hamburger — 3 garis SAMA LEBAR agar simetris saat rotate -->
+        <!-- Hamburger — semua span w-6 sama lebar -->
         <button
           class="md:hidden flex flex-col justify-center gap-[5px] w-6 h-6"
           @click="menuOpen = !menuOpen"
@@ -150,12 +149,11 @@
     </div>
 
     <!-- Search Results Dropdown -->
-    <!-- Search Results Dropdown -->
     <Transition name="search-results">
       <div
         v-if="searchOpen && searchQuery.length > 1"
-        class="hidden md:block absolute top-full left-0 right-0 bg-drz-black border-t border-b border-drz-white/10 px-6 md:px-12 py-4 max-h-72 overflow-y-auto"
-        style="backdrop-filter: none; background-color: #050505"
+        class="hidden md:block absolute top-full left-0 right-0 border-t border-b border-drz-white/10 px-6 md:px-12 py-4 max-h-72 overflow-y-auto"
+        style="background-color: #050505"
       >
         <div
           v-if="searchResults.length > 0"
@@ -198,107 +196,141 @@
         </div>
       </div>
     </Transition>
+  </nav>
 
-    <!-- Mobile Full Screen Menu -->
-    <Transition name="mobile-menu">
-      <div
-        v-if="menuOpen"
-        class="fixed inset-0 bg-drz-black z-40 flex flex-col justify-center items-center md:hidden"
-      >
-        <!-- Mobile search -->
-        <div class="absolute top-20 left-6 right-6">
-          <div
-            class="flex items-center gap-3 border-b border-drz-white/15 pb-4"
+  <!-- ✅ Mobile menu DI LUAR <nav> — tidak terpengaruh scroll class apapun -->
+  <Transition name="mobile-menu">
+    <div
+      v-if="menuOpen"
+      class="fixed inset-0 z-40 flex flex-col justify-center items-center md:hidden"
+      style="background-color: #050505"
+    >
+      <!-- Mobile search -->
+      <div class="absolute top-[5.5rem] left-6 right-6">
+        <div class="flex items-center gap-3 border-b border-drz-white/15 pb-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            class="text-drz-muted shrink-0"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input
+            v-model="searchQuery"
+            type="text"
+            placeholder="Search products..."
+            class="flex-1 bg-transparent text-drz-white font-mono text-sm outline-none placeholder:text-drz-muted"
+            @keydown.enter="submitSearch"
+          />
+          <button
+            v-if="searchQuery.length > 0"
+            @click="searchQuery = ''"
+            class="text-drz-muted hover:text-drz-white transition-colors"
           >
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
+              width="12"
+              height="12"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="1.8"
-              class="text-drz-muted shrink-0"
+              stroke-width="2"
+              stroke-linecap="round"
             >
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
-            <input
-              v-model="searchQuery"
-              type="text"
-              placeholder="Search products..."
-              class="flex-1 bg-transparent text-drz-white font-mono text-sm outline-none placeholder:text-drz-muted"
-              @keydown.enter="submitSearch"
-            />
-          </div>
-          <!-- Mobile search results -->
-          <div
-            v-if="searchQuery.length > 1"
-            class="mt-2 max-h-48 overflow-y-auto flex flex-col divide-y divide-drz-white/10"
+          </button>
+        </div>
+
+        <!-- Results — solid background, border, shadow -->
+        <div
+          v-if="searchQuery.length > 1"
+          class="mt-2 max-h-64 overflow-y-auto flex flex-col divide-y divide-drz-white/10 border border-drz-white/10"
+          style="background-color: #050505"
+        >
+          <NuxtLink
+            v-for="result in searchResults"
+            :key="result.id"
+            :to="`/product/${result.slug}`"
+            class="flex items-center gap-3 px-4 py-3 hover:bg-drz-white/5 transition-colors group"
+            @click="
+              menuOpen = false;
+              searchQuery = '';
+            "
           >
-            <NuxtLink
-              v-for="result in searchResults"
-              :key="result.id"
-              :to="`/product/${result.slug}`"
-              class="flex items-center gap-3 py-3"
-              @click="
-                menuOpen = false;
-                searchQuery = '';
-              "
-            >
-              <img
-                :src="result.image"
-                :alt="result.name"
-                class="w-8 h-10 object-cover shrink-0"
-              />
-              <div class="flex-1 min-w-0">
-                <p class="font-body text-drz-white text-sm truncate">
-                  {{ result.name }}
-                </p>
-                <p class="font-mono text-drz-lime text-[10px]">
-                  {{ formatRp(result.price) }}
-                </p>
-              </div>
-            </NuxtLink>
-            <div v-if="searchResults.length === 0" class="py-3 text-center">
+            <img
+              :src="result.image"
+              :alt="result.name"
+              class="w-9 h-11 object-cover shrink-0"
+            />
+            <div class="flex-1 min-w-0">
               <p
-                class="font-mono text-drz-muted text-[10px] uppercase tracking-widest"
+                class="font-mono text-[9px] text-drz-muted uppercase tracking-widest mb-0.5"
               >
-                No results
+                {{ result.category }}
+              </p>
+              <p
+                class="font-body text-drz-white text-sm group-hover:text-drz-lime transition-colors truncate"
+              >
+                {{ result.name }}
               </p>
             </div>
+            <span class="font-mono text-drz-lime text-xs shrink-0">{{
+              formatRp(result.price)
+            }}</span>
+          </NuxtLink>
+
+          <div
+            v-if="searchResults.length === 0"
+            class="px-4 py-5 text-center"
+            style="background-color: #050505"
+          >
+            <p
+              class="font-mono text-drz-muted text-[10px] uppercase tracking-widest"
+            >
+              No results for "<span class="text-drz-white">{{
+                searchQuery
+              }}</span
+              >"
+            </p>
           </div>
         </div>
-
-        <!-- Nav links -->
-        <ul class="flex flex-col items-center gap-7 mt-16">
-          <li v-for="link in links" :key="link.label">
-            <NuxtLink
-              :to="link.to"
-              class="font-display text-5xl text-drz-white hover:text-drz-lime transition-colors"
-              active-class="text-drz-lime"
-              @click="menuOpen = false"
-            >
-              {{ link.label }}
-            </NuxtLink>
-          </li>
-        </ul>
-
-        <div
-          class="absolute bottom-10 font-mono text-xs text-drz-muted tracking-widest"
-        >
-          DROOZLE.CO — SS25
-        </div>
       </div>
-    </Transition>
-  </nav>
 
-  <!-- Backdrop to close search -->
+      <!-- Nav links -->
+      <ul class="flex flex-col items-center gap-7 mt-16">
+        <li v-for="link in links" :key="link.label">
+          <NuxtLink
+            :to="link.to"
+            class="font-display text-5xl text-drz-white hover:text-drz-lime transition-colors"
+            active-class="text-drz-lime"
+            @click="menuOpen = false"
+          >
+            {{ link.label }}
+          </NuxtLink>
+        </li>
+      </ul>
+
+      <div
+        class="absolute bottom-10 font-mono text-xs text-drz-muted tracking-widest"
+      >
+        DROOZLE.CO — SS25
+      </div>
+    </div>
+  </Transition>
+
+  <!-- Backdrop close search -->
   <div v-if="searchOpen" class="fixed inset-0 z-40" @click="closeSearch"></div>
 </template>
 
 <script setup>
-import { ref, computed, watch, nextTick, onMounted, onUnmounted } from "vue";
+import { ref, computed, nextTick, onMounted, onUnmounted } from "vue";
 import { useRouter } from "vue-router";
 import { useCart } from "~/composables/useCart.js";
 
@@ -459,26 +491,19 @@ function handleResize() {
 
 function handleScroll() {
   if (!navbar.value) return;
+  // ✅ Hanya ubah background navbar — tidak menyentuh apapun selain navbar itu sendiri
   if (window.scrollY > 80) {
-    navbar.value.classList.add(
-      "bg-drz-black/90",
-      "backdrop-blur-sm",
-      "border-b",
-      "border-drz-white/5",
-    );
+    navbar.value.style.backgroundColor = "rgba(5,5,5,0.92)";
+    navbar.value.style.borderBottom = "1px solid rgba(255,255,255,0.05)";
   } else {
-    navbar.value.classList.remove(
-      "bg-drz-black/90",
-      "backdrop-blur-sm",
-      "border-b",
-      "border-drz-white/5",
-    );
+    navbar.value.style.backgroundColor = "";
+    navbar.value.style.borderBottom = "";
   }
 }
 
 onMounted(() => {
   window.addEventListener("resize", handleResize);
-  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("scroll", handleScroll, { passive: true });
 });
 
 onUnmounted(() => {
