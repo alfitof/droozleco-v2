@@ -1,6 +1,5 @@
 <template>
   <section ref="sectionRef" class="py-24 px-6 md:px-12 bg-drz-black">
-    <!-- Header -->
     <div class="mb-16 flex items-end justify-between">
       <div>
         <p
@@ -43,7 +42,6 @@
       </div>
     </div>
 
-    <!-- Slider wrapper -->
     <div class="overflow-hidden" ref="sliderWrapper">
       <div
         ref="sliderTrack"
@@ -88,7 +86,6 @@
       </div>
     </div>
 
-    <!-- Dots — jumlah = maxSlide + 1 (posisi navigasi yang valid) -->
     <div class="flex items-center gap-2 mt-8 justify-center md:justify-start">
       <button
         v-for="i in dotCount"
@@ -107,7 +104,7 @@
     <p
       class="text-center font-mono text-[10px] text-drz-muted/50 uppercase tracking-widest mt-4 md:hidden"
     >
-      ← Swipe →
+      ← Swipe to explore →
     </p>
   </section>
 </template>

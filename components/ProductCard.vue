@@ -11,25 +11,25 @@
         :class="tall ? 'aspect-[3/4]' : 'aspect-square'"
       />
 
-      <!-- Overlay -->
+      <!-- Hover overlay — pointer-events hanya aktif saat visible -->
       <div
-        class="product-overlay absolute inset-0 bg-drz-black/70 flex flex-col items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        class="absolute inset-0 bg-drz-black/70 flex flex-col items-center justify-center gap-2 md:gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-3 pointer-events-none group-hover:pointer-events-auto"
       >
         <button
           @click.prevent="$emit('quickAdd', product)"
-          class="bg-drz-lime text-drz-black font-mono text-xs uppercase tracking-widest px-6 py-3 font-bold hover:bg-drz-white transition-colors"
+          class="w-full bg-drz-lime text-drz-black font-mono uppercase tracking-widest font-bold hover:bg-drz-white transition-colors text-[9px] md:text-xs px-3 md:px-6 py-2 md:py-3"
         >
           Quick Add
         </button>
         <span
-          class="font-mono text-drz-white text-xs uppercase tracking-widest border border-drz-white/30 px-6 py-3 hover:border-drz-lime hover:text-drz-lime transition-colors"
+          class="w-full text-center border border-drz-white/40 text-drz-white font-mono uppercase tracking-widest hover:border-drz-lime hover:text-drz-lime transition-colors text-[9px] md:text-xs px-3 md:px-6 py-2 md:py-3"
         >
           View Item →
         </span>
       </div>
 
-      <!-- Badges -->
-      <div class="absolute top-3 left-3 flex flex-col gap-2">
+      <!-- Badge -->
+      <div class="absolute top-3 left-3 z-10">
         <span
           v-if="product.badge"
           class="tag-pill font-bold text-[10px]"
@@ -41,24 +41,28 @@
             'text-drz-white border-drz-white bg-drz-black/90':
               product.badge === 'LAST FEW',
           }"
+          >{{ product.badge }}</span
         >
-          {{ product.badge }}
-        </span>
       </div>
 
-      <!-- Wishlist -->
+      <!-- Wishlist — z-20 agar selalu di atas overlay, pointer-events-auto selalu -->
       <button
-        @click.prevent
-        class="absolute top-3 right-3 w-8 h-8 bg-drz-black/60 border border-drz-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all hover:border-drz-lime"
-        aria-label="Wishlist"
+        @click.prevent="toggleWish"
+        class="absolute top-3 right-3 z-20 w-8 h-8 flex items-center justify-center border transition-all duration-300"
+        :class="
+          isWished
+            ? 'bg-drz-red border-drz-red'
+            : 'bg-drz-black/60 border-drz-white/20 hover:border-drz-red'
+        "
+        aria-label="Toggle wishlist"
       >
         <svg
-          width="14"
-          height="14"
+          width="13"
+          height="13"
           viewBox="0 0 24 24"
-          fill="none"
           stroke="currentColor"
           stroke-width="1.8"
+          :fill="isWished ? 'white' : 'none'"
           class="text-drz-white"
         >
           <path
@@ -79,7 +83,7 @@
         <h3 class="font-body text-drz-white text-sm font-medium truncate">
           {{ product.name }}
         </h3>
-        <div class="flex gap-1 mt-1.5">
+        <div class="flex gap-1 mt-1.5 flex-wrap">
           <span
             v-for="s in product.sizes?.slice(0, 4)"
             :key="s"
@@ -96,12 +100,20 @@
 </template>
 
 <script setup>
-defineProps({
+import { ref } from "vue";
+
+const props = defineProps({
   product: { type: Object, required: true },
   tall: { type: Boolean, default: false },
 });
 
 defineEmits(["quickAdd"]);
+
+const isWished = ref(false);
+
+function toggleWish() {
+  isWished.value = !isWished.value;
+}
 
 function formatPrice(val) {
   return "Rp " + Number(val).toLocaleString("id-ID");

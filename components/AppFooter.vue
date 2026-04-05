@@ -10,8 +10,8 @@
         <p
           class="font-body text-drz-muted text-sm leading-relaxed max-w-xs mb-8"
         >
-          Underground streetwear born in Jakarta. Worn by those who refuse to be
-          ordinary. Dropped every Thursday at 10.00 WIB.
+          Underground streetwear born in Ciamis. Worn by those who refuse to be
+          ordinary. New drop every Thursday at 10.00 WIB.
         </p>
         <div class="flex items-center gap-4">
           <a
@@ -49,7 +49,7 @@
       class="flex flex-col md:flex-row items-center justify-between gap-4 mb-0"
     >
       <p class="font-mono text-drz-muted text-[10px] uppercase tracking-widest">
-        © 2025 DROOZLE.CO — All Rights Reserved
+        © 2022 DROOZLE.CO — All Rights Reserved
       </p>
 
       <p class="font-mono text-drz-muted text-[10px] uppercase tracking-widest">
@@ -78,14 +78,7 @@ const socials = ["IG", "TT", "WA", "Tokopedia"];
 const linkCols = [
   {
     title: "Shop",
-    links: [
-      "New Drops",
-      "Tops",
-      "Bottoms",
-      "Outerwear",
-      "Headwear",
-      "Accessories",
-    ],
+    links: ["New Drops", "Collections", "Lookbook", "Headwear", "Accessories"],
   },
   {
     title: "Info",

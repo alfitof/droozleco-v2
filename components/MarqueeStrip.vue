@@ -1,5 +1,5 @@
 <template>
-  <div class="relative py-4 bg-drz-lime overflow-hidden border-y-0">
+  <div class="relative py-4 bg-drz-lime overflow-hidden">
     <div class="flex overflow-hidden">
       <div class="marquee-track">
         <span
@@ -14,7 +14,7 @@
               fill="black"
             />
           </svg>
-          FREE SHIPPING IDR 500K+
+          FREE SHIPPING ABOVE Rp 500K
           <svg class="w-4 h-4 inline-block" viewBox="0 0 16 16" fill="none">
             <path
               d="M8 0L9.8 6.2L16 8L9.8 9.8L8 16L6.2 9.8L0 8L6.2 6.2L8 0Z"

@@ -14,6 +14,7 @@
       ></div>
     </div>
 
+    <!-- MOBILE LAYOUT -->
     <div class="relative z-10 flex flex-col min-h-screen md:hidden">
       <div
         ref="floatImgMobile"
@@ -25,7 +26,6 @@
             alt="Drop 001"
             class="w-full object-cover"
           />
-
           <div
             class="absolute -top-4 -right-4 w-16 h-16 bg-drz-lime rounded-full flex items-center justify-center rotate-12 z-10"
           >
@@ -35,7 +35,6 @@
               NEW<br />DROP<br />SS25
             </span>
           </div>
-
           <div
             class="absolute bottom-3 left-3 bg-drz-black border border-drz-lime px-3 py-1.5"
           >
@@ -52,7 +51,6 @@
             >Spring / Summer 2025</span
           >
         </div>
-
         <h1 class="font-display leading-none mb-6">
           <span
             class="glitch block text-[clamp(4rem,18vw,6rem)] text-drz-white"
@@ -65,12 +63,9 @@
             >RITUAL.</span
           >
         </h1>
-
         <p class="font-body text-drz-muted text-sm leading-relaxed mb-8">
-          Anti-mainstream threads untuk mereka<br />yang bergerak pelan tapi
-          tampil keras.
+          Anti-mainstream threads for those<br />who refuse to blend in.
         </p>
-
         <div class="flex flex-col gap-3">
           <button
             class="w-full bg-drz-lime text-drz-black font-mono text-xs uppercase tracking-widest px-6 py-4 font-bold text-center"
@@ -86,6 +81,7 @@
       </div>
     </div>
 
+    <!-- DESKTOP LAYOUT -->
     <div class="relative z-10 hidden md:flex min-h-screen">
       <div class="flex flex-col justify-end px-12 pb-24 w-1/2 xl:w-7/12">
         <div ref="labelRef" class="flex items-center gap-3 mb-6">
@@ -95,7 +91,6 @@
             >Spring / Summer 2025</span
           >
         </div>
-
         <h1 ref="headlineRef" class="font-display leading-none mb-6">
           <span
             class="glitch block text-[clamp(4rem,10vw,11rem)] text-drz-white"
@@ -112,15 +107,13 @@
             >RITUAL.</span
           >
         </h1>
-
         <p
           ref="subRef"
           class="font-body text-drz-muted text-sm md:text-base max-w-xs leading-relaxed mb-10"
         >
-          Anti-mainstream threads for those<br />
-          who move in silence but dress loud.
+          Anti-mainstream threads for those<br />who move in silence but dress
+          loud.
         </p>
-
         <div ref="ctaRef" class="flex items-center gap-4">
           <button
             class="bg-drz-lime text-drz-black font-mono text-xs uppercase tracking-widest px-8 py-4 hover:bg-drz-white transition-colors duration-300 font-bold whitespace-nowrap"
@@ -171,11 +164,10 @@
     <div
       class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-drz-lime/40 to-transparent z-20"
     ></div>
-
     <div
       class="absolute bottom-8 left-12 font-mono text-drz-muted text-[10px] tracking-wider z-20 hidden md:block"
     >
-      6.2088° S, 106.8456° E — JAKARTA
+      7.3255° S, 108.3530° E — Ciamis, ID
     </div>
   </section>
 </template>
@@ -196,9 +188,7 @@ onMounted(() => {
       setTimeout(initGSAP, 100);
       return;
     }
-
     const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
-
     tl.from(labelRef.value, { y: 20, opacity: 0, duration: 0.8 })
       .from(
         headlineRef.value?.children[0],
@@ -214,7 +204,6 @@ onMounted(() => {
       .from(ctaRef.value, { y: 20, opacity: 0, duration: 0.7 }, "-=0.5")
       .from(floatImg.value, { x: 60, opacity: 0, duration: 1.2 }, "-=1.6");
 
-    // Subtle parallax on scroll
     gsap.to(floatImg.value, {
       y: -50,
       ease: "none",
@@ -226,7 +215,6 @@ onMounted(() => {
       },
     });
   };
-
   initGSAP();
 });
 </script>

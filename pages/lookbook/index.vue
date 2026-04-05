@@ -5,7 +5,7 @@
     <PageHero
       title="LOOK BOOK."
       label="SS25 — Visual Stories"
-      sub="Bukan sekedar foto. Ini cara kami cerita tentang siapa kamu."
+      sub="Not just photos. This is how we tell you who you are."
       bgText="LOOK"
     />
 
@@ -28,7 +28,7 @@
       </button>
     </div>
 
-    <!-- Editorial Grid — asymmetric layout -->
+    <!-- Editorial Grid -->
     <div class="px-6 md:px-12 py-12">
       <!-- Feature story -->
       <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
@@ -56,7 +56,7 @@
                 VOID
               </h2>
               <p class="font-body text-drz-muted text-sm max-w-xs">
-                Ketika kekosongan menjadi pernyataan. All-black. Semua volume.
+                When emptiness becomes a statement. All-black. All volume.
               </p>
             </div>
           </div>
@@ -146,7 +146,7 @@
         </div>
       </div>
 
-      <!-- Full width film strip -->
+      <!-- Full width banner -->
       <div class="relative overflow-hidden group cursor-pointer">
         <img
           src="https://placehold.co/1400x500/0a0a0a/C8FF00?text=CHAPTER+07+—+THE+RITUAL"
@@ -171,7 +171,7 @@
         </div>
       </div>
 
-      <!-- BTS note -->
+      <!-- BTS -->
       <div
         class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center border-t border-drz-white/10 pt-16"
       >
@@ -184,12 +184,12 @@
           <h3
             class="font-display text-4xl md:text-5xl text-drz-white mb-6 leading-none"
           >
-            JAKARTA<br />NEVER<br />SLEEPS.
+            Ciamis<br />NEVER<br />SLEEPS.
           </h3>
           <p class="font-body text-drz-muted text-sm leading-relaxed max-w-sm">
-            SS25 diambil dalam dua malam di sudut-sudut Jakarta yang jarang
-            dilihat orang. Gang sempit, rooftop bocor, dan teman-teman yang mau
-            bangun jam 3 pagi demi satu frame yang tepat.
+            SS25 was shot over two nights in corners of Ciamis most people never
+            see. Narrow alleys, leaky rooftops, and friends willing to wake up
+            at 3am for one perfect frame.
           </p>
         </div>
         <div class="grid grid-cols-2 gap-3">
@@ -225,21 +225,21 @@ const middleLooks = [
     num: "04",
     title: "RITUAL",
     tag: "Chapter 04 — Layered",
-    sub: "Layering bukan soal tebal, tapi soal kedalaman.",
+    sub: "Layering isn't about thickness — it's about depth.",
     image: "https://placehold.co/600x800/0a0a0a/C8FF00?text=LOOK+04",
   },
   {
     num: "05",
     title: "GHOST",
     tag: "Chapter 05 — Oversized",
-    sub: "Ruang yang berlebih bukan kemalasan — itu kebebasan.",
+    sub: "Extra room isn't laziness — it's freedom.",
     image: "https://placehold.co/600x800/0f0f0f/ffffff?text=LOOK+05",
   },
   {
     num: "06",
     title: "STATIC",
     tag: "Chapter 06 — Raw",
-    sub: "Belum selesai adalah aesthetic-nya.",
+    sub: "Unfinished is the aesthetic.",
     image: "https://placehold.co/600x800/121212/C8FF00?text=LOOK+06",
   },
 ];

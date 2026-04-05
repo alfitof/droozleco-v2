@@ -2,9 +2,9 @@
   <main class="bg-drz-black min-h-screen">
     <AppNav />
 
-    <!-- Custom hero for about -->
+    <!-- Hero: pt-24 agar tidak nabrak nav -->
     <div
-      class="relative min-h-[70vh] flex flex-col justify-end overflow-hidden"
+      class="relative min-h-[75vh] flex flex-col justify-end overflow-hidden pt-24"
     >
       <img
         src="https://placehold.co/1400x800/0a0a0a/1a1a1a?text=."
@@ -12,9 +12,9 @@
         class="absolute inset-0 w-full h-full object-cover opacity-30"
       />
       <div
-        class="absolute inset-0 bg-gradient-to-t from-drz-black to-transparent"
+        class="absolute inset-0 bg-gradient-to-t from-drz-black via-drz-black/40 to-transparent"
       ></div>
-      <div class="relative z-10 px-6 md:px-12 pb-20">
+      <div class="relative z-10 px-6 md:px-12 pb-20 lg:pb-0">
         <p
           class="font-mono text-drz-lime text-[10px] uppercase tracking-widest mb-4 flex items-center gap-3"
         >
@@ -43,15 +43,14 @@
             class="font-display text-drz-white leading-tight mb-8"
             style="font-size: clamp(2rem, 4vw, 3.5rem)"
           >
-            "KAMI TIDAK BUAT BAJU.<br />
-            KAMI BUAT IDENTITAS."
+            "WE DON'T MAKE<br />CLOTHES. WE MAKE<br />IDENTITY."
           </blockquote>
           <p class="font-body text-drz-muted text-sm leading-relaxed max-w-md">
-            Droozle lahir di Jakarta pada 2022 dari satu kamar kos dan satu
-            keyakinan: streetwear lokal bisa sama brutalnya dengan brand luar.
-            Kami tidak punya investor. Kami tidak punya kantor fancy. Yang kami
-            punya adalah visi, printer DTG satu unit, dan komunitas yang percaya
-            bahwa tampil beda adalah hak semua orang.
+            Droozle was born in Ciamis in 2022 from one dorm room and one
+            belief: local streetwear can hit just as hard as anything from
+            abroad. No investors. No fancy office. Just a vision, one DTG
+            printer, and a community that believes standing out is everyone's
+            right.
           </p>
         </div>
         <div class="grid grid-cols-2 gap-3">
@@ -69,12 +68,12 @@
       </div>
     </div>
 
-    <!-- Numbers -->
+    <!-- Numbers — centered both PC and mobile -->
     <div class="px-6 md:px-12 py-20 border-b border-drz-white/10">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        <div v-for="stat in stats" :key="stat.label" class="group">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div v-for="stat in stats" :key="stat.label">
           <div
-            class="font-display text-drz-lime leading-none mb-2"
+            class="font-display text-drz-lime leading-none mb-2 flex justify-center"
             style="font-size: clamp(3rem, 6vw, 5rem)"
           >
             {{ stat.value }}
@@ -101,10 +100,14 @@
           <div
             class="w-10 h-10 border border-drz-lime flex items-center justify-center mb-6 group-hover:bg-drz-lime transition-colors duration-300"
           >
-            <component
-              :is="val.icon"
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
               class="w-4 h-4 text-drz-lime group-hover:text-drz-black transition-colors duration-300"
-            />
+              v-html="val.iconPath"
+            ></svg>
           </div>
           <h3 class="font-display text-2xl text-drz-white mb-3">
             {{ val.title }}
@@ -116,7 +119,7 @@
       </div>
     </div>
 
-    <!-- Team -->
+    <!-- The Crew — 1 member, easily expandable -->
     <div class="px-6 md:px-12 py-24 border-b border-drz-white/10">
       <p
         class="font-mono text-drz-lime text-[10px] uppercase tracking-widest mb-12 flex items-center gap-3"
@@ -185,7 +188,7 @@ import AppNav from "~/components/AppNav.vue";
 import AppFooter from "~/components/AppFooter.vue";
 
 const stats = [
-  { value: "2022", label: "Founded in Jakarta" },
+  { value: "2022", label: "Founded in Ciamis" },
   { value: "40+", label: "Drops Released" },
   { value: "12K+", label: "Units Sold" },
   { value: "100%", label: "Local Made" },
@@ -194,47 +197,29 @@ const stats = [
 const values = [
   {
     title: "NO RESTOCK.",
-    desc: "Setiap drop adalah limited. Begitu habis, habis. Ini bukan kelangkaan buatan — ini komitmen bahwa yang kamu punya benar-benar spesial.",
-    icon: {
-      template: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18.36 6.64a9 9 0 11-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>`,
-    },
+    desc: "Every drop is limited. Once it's gone, it's gone. This isn't manufactured scarcity — it's a commitment that what you own is genuinely special.",
+    iconPath:
+      '<path d="M18.36 6.64a9 9 0 11-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/>',
   },
   {
     title: "LOCAL FIRST.",
-    desc: "Semua produksi di Indonesia. Semua vendor lokal. Semua talent lokal. Bukan karena lebih murah, tapi karena kami percaya kualitas ada di sini.",
-    icon: {
-      template: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>`,
-    },
+    desc: "All production in Indonesia. All local vendors. All local talent. Not because it's cheaper — because we believe quality lives right here.",
+    iconPath:
+      '<path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/>',
   },
   {
     title: "NO RULES.",
-    desc: 'Tidak ada dress code di sini. Tidak ada "cara yang benar" untuk memakai produk kami. Pakai sesuai cara kamu. Itu selalu benar.',
-    icon: {
-      template: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
-    },
+    desc: 'No dress code here. No "right way" to wear our stuff. Wear it your way. That\'s always the correct answer.',
+    iconPath: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
   },
 ];
 
+// Add more crew members here anytime
 const team = [
   {
-    name: "Reza",
+    name: "Alfito",
     role: "Founder & Creative Director",
-    image: "https://placehold.co/300x300/111111/C8FF00?text=RZ",
-  },
-  {
-    name: "Nadia",
-    role: "Head of Design",
-    image: "https://placehold.co/300x300/0d0d0d/ffffff?text=ND",
-  },
-  {
-    name: "Farel",
-    role: "Production Lead",
-    image: "https://placehold.co/300x300/141414/C8FF00?text=FR",
-  },
-  {
-    name: "Kiki",
-    role: "Community & Marketing",
-    image: "https://placehold.co/300x300/111111/ffffff?text=KK",
+    image: "https://placehold.co/300x300/111111/C8FF00?text=AF",
   },
 ];
 </script>

@@ -5,7 +5,7 @@
     <PageHero
       title="STOCKISTS."
       label="Find Us IRL"
-      sub="Toko fisik yang jual Droozle. Datang, coba, rasakan sendiri."
+      sub="Physical stores carrying Droozle. Come in, try it on, feel the difference."
       bgText="STORE"
     />
 
@@ -72,7 +72,7 @@
             <a
               :href="store.maps"
               target="_blank"
-              class="font-mono text-[10px] uppercase tracking-widest text-drz-muted hover:text-drz-lime transition-colors flex items-center gap-1"
+              class="font-mono text-[10px] uppercase tracking-widest text-drz-muted hover:text-drz-lime transition-colors flex items-center gap-1.5"
             >
               <svg
                 width="10"
@@ -91,7 +91,7 @@
             </a>
             <span class="text-drz-white/10">·</span>
             <a
-              :href="`https://ig.com/${store.ig}`"
+              :href="`https://instagram.com/${store.ig}`"
               target="_blank"
               class="font-mono text-[10px] uppercase tracking-widest text-drz-muted hover:text-drz-lime transition-colors"
             >
@@ -101,30 +101,12 @@
         </div>
       </div>
 
-      <!-- Own a store? CTA -->
-      <div
-        class="mt-20 border border-dashed border-drz-white/15 p-10 text-center hover:border-drz-lime transition-colors duration-300 group"
-      >
-        <p
-          class="font-mono text-drz-muted text-[10px] uppercase tracking-widest mb-4"
-        >
-          Stockist Application
+      <!-- Empty state if filter yields nothing -->
+      <div v-if="filteredStores.length === 0" class="py-24 text-center">
+        <p class="font-display text-5xl text-drz-white/10 mb-4">NONE YET.</p>
+        <p class="font-mono text-drz-muted text-xs uppercase tracking-widest">
+          No stockists in this region yet. Check back soon.
         </p>
-        <h3
-          class="font-display text-4xl text-drz-white mb-4 group-hover:text-drz-lime transition-colors"
-        >
-          PUNYA TOKO?
-        </h3>
-        <p class="font-body text-drz-muted text-sm max-w-sm mx-auto mb-8">
-          Kami selalu buka untuk kerjasama dengan toko lokal yang punya visi
-          sama. Kirim proposal kamu, kami baca semua.
-        </p>
-        <a
-          href="mailto:stockist@droozle.co"
-          class="inline-block bg-drz-lime text-drz-black font-mono text-xs uppercase tracking-widest px-8 py-4 font-bold hover:bg-drz-white transition-colors"
-        >
-          Apply as Stockist →
-        </a>
       </div>
     </div>
 
@@ -138,72 +120,18 @@ import AppNav from "~/components/AppNav.vue";
 import AppFooter from "~/components/AppFooter.vue";
 import PageHero from "~/components/PageHero.vue";
 
-const regions = ["All", "Jakarta", "Bandung", "Surabaya", "Yogyakarta", "Bali"];
+const regions = ["All", "Ciamis"];
 const activeRegion = ref("All");
 
 const stores = [
   {
-    name: "Rogue Studio",
-    address: "Jl. Kemang Raya No. 12, Jakarta Selatan",
-    hours: "Mon–Sat 12.00–21.00",
-    region: "Jakarta",
+    name: "Droozle Flagship",
+    address: "Jl. Sudirman No. 88, Ciamis, Jawa Barat 46211",
+    hours: "Mon–Sat 10.00–20.00 WIB",
+    region: "Ciamis",
     hasAll: true,
     maps: "#",
-    ig: "roguestudio.jkt",
-  },
-  {
-    name: "District Supply",
-    address: "Jl. Cipete Raya No. 45, Jakarta Selatan",
-    hours: "Tue–Sun 11.00–20.00",
-    region: "Jakarta",
-    hasAll: false,
-    maps: "#",
-    ig: "districtsupply",
-  },
-  {
-    name: "Analog Store",
-    address: "Jl. Dago No. 67, Bandung",
-    hours: "Mon–Sun 10.00–21.00",
-    region: "Bandung",
-    hasAll: true,
-    maps: "#",
-    ig: "analogstore.bdg",
-  },
-  {
-    name: "Kreasi Distro",
-    address: "Jl. Trunojoyo No. 23, Bandung",
-    hours: "Mon–Sat 11.00–20.00",
-    region: "Bandung",
-    hasAll: false,
-    maps: "#",
-    ig: "kreasidistro",
-  },
-  {
-    name: "Underground Surabaya",
-    address: "Jl. Rungkut Industri No. 88, Surabaya",
-    hours: "Mon–Sat 12.00–21.00",
-    region: "Surabaya",
-    hasAll: true,
-    maps: "#",
-    ig: "underground.sby",
-  },
-  {
-    name: "Lawas Space",
-    address: "Jl. Malioboro No. 100, Yogyakarta",
-    hours: "Tue–Sun 10.00–22.00",
-    region: "Yogyakarta",
-    hasAll: false,
-    maps: "#",
-    ig: "lawasspace.yk",
-  },
-  {
-    name: "Void Bali",
-    address: "Jl. Seminyak No. 5, Bali",
-    hours: "Mon–Sun 11.00–23.00",
-    region: "Bali",
-    hasAll: true,
-    maps: "#",
-    ig: "void.bali",
+    ig: "droozle.co",
   },
 ];
 

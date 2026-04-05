@@ -5,7 +5,7 @@
     <PageHero
       title="SHOP ALL."
       label="Droozle — SS25 Collection"
-      sub="Semua produk. Satu visi. Nggak ada yang biasa-biasa."
+      sub="Everything we make. One vision. Nothing ordinary."
       bgText="SHOP"
     />
 
@@ -116,7 +116,7 @@
       <div v-if="filteredProducts.length === 0" class="py-32 text-center">
         <p class="font-display text-6xl text-drz-white/10 mb-4">EMPTY.</p>
         <p class="font-mono text-drz-muted text-xs uppercase tracking-widest">
-          No products in this category
+          No products in this category yet.
         </p>
       </div>
     </div>

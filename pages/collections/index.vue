@@ -5,7 +5,7 @@
     <PageHero
       title="COLLECTIONS."
       label="Droozle — All Seasons"
-      sub="Setiap koleksi adalah chapter. Ini semua babnya."
+      sub="Every collection is a chapter. Here are all of them."
       bgText="COL"
     />
 
@@ -16,40 +16,40 @@
           src="https://placehold.co/1400x600/0d0d0d/C8FF00?text=SS25+—+RITUAL"
           alt="SS25 Ritual"
           class="w-full object-cover transition-transform duration-700 group-hover:scale-105"
-          style="aspect-ratio: 21/9"
+          style="aspect-ratio: 16/9; min-height: 280px"
         />
         <div
-          class="absolute inset-0 bg-gradient-to-r from-drz-black/80 via-drz-black/30 to-transparent flex items-center px-12"
+          class="absolute inset-0 bg-gradient-to-t from-drz-black/95 via-drz-black/50 to-transparent md:bg-gradient-to-r md:from-drz-black/80 md:via-drz-black/30 md:to-transparent flex items-end md:items-center px-6 md:px-12 pb-8 md:pb-0"
         >
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <span class="w-6 h-px bg-drz-lime"></span>
+          <div class="w-full md:w-auto">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="w-5 h-px bg-drz-lime"></span>
               <span
                 class="font-mono text-drz-lime text-[10px] tracking-widest uppercase"
                 >Current Season</span
               >
             </div>
             <h2
-              class="font-display text-drz-white leading-none mb-4"
-              style="font-size: clamp(3rem, 8vw, 7rem)"
+              class="font-display text-drz-white leading-none mb-3"
+              style="font-size: clamp(2.5rem, 7vw, 6rem)"
             >
               SS25<br />RITUAL
             </h2>
-            <p class="font-body text-drz-muted text-sm max-w-xs mb-8">
-              12 pieces. 7 looks. Satu visi. Koleksi paling gelap yang pernah
-              kami buat.
+            <p
+              class="font-body text-drz-muted text-sm max-w-xs mb-6 hidden md:block"
+            >
+              12 pieces. 7 looks. One vision.<br />Our darkest collection yet.
             </p>
             <NuxtLink
               to="/shop"
-              class="inline-flex items-center gap-2 bg-drz-lime text-drz-black font-mono text-xs uppercase tracking-widest px-8 py-4 font-bold hover:bg-drz-white transition-colors"
+              class="inline-flex items-center gap-2 bg-drz-lime text-drz-black font-mono text-xs uppercase tracking-widest px-6 md:px-8 py-3 md:py-4 font-bold hover:bg-drz-white transition-colors"
             >
               Shop Collection →
             </NuxtLink>
           </div>
         </div>
-        <!-- Items count badge -->
         <div
-          class="absolute top-6 right-6 bg-drz-black/70 border border-drz-lime px-4 py-2"
+          class="absolute top-4 right-4 bg-drz-black/70 border border-drz-lime px-3 py-1.5"
         >
           <span class="font-mono text-drz-lime text-xs">12 Pieces</span>
         </div>
@@ -71,7 +71,7 @@
             class="absolute inset-0 bg-gradient-to-t from-drz-black/90 via-drz-black/20 to-transparent flex flex-col justify-end p-6"
           >
             <div
-              class="translate-y-3 group-hover:translate-y-0 transition-transform duration-400"
+              class="translate-y-3 group-hover:translate-y-0 transition-transform duration-300"
             >
               <p
                 class="font-mono text-[10px] uppercase tracking-widest mb-1"
@@ -108,7 +108,7 @@
         </div>
       </div>
 
-      <!-- 2-col row -->
+      <!-- Archive row -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div
           v-for="col in archiveCollections"
@@ -118,7 +118,7 @@
           <img
             :src="col.image"
             :alt="col.name"
-            class="w-full aspect-[16/9] object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0 transition-all duration-500"
+            class="w-full aspect-[16/9] object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
           />
           <div
             class="absolute inset-0 bg-gradient-to-t from-drz-black/80 to-transparent flex items-end p-6"
@@ -157,7 +157,7 @@ const collections = [
   {
     name: "VOID",
     season: "SS25 — Chapter 01",
-    desc: "Semua hitam. Semua oversized. Tidak ada kompromi.",
+    desc: "All black. All oversized. No compromise.",
     pieces: 4,
     available: true,
     accent: "#C8FF00",
@@ -166,7 +166,7 @@ const collections = [
   {
     name: "SPECTER",
     season: "SS25 — Chapter 02",
-    desc: "Ghost silhouettes yang menghantui setiap ruangan.",
+    desc: "Ghost silhouettes that haunt every room.",
     pieces: 3,
     available: true,
     accent: "#ffffff",
@@ -175,7 +175,7 @@ const collections = [
   {
     name: "HAZARD",
     season: "SS25 — Chapter 03",
-    desc: "Utility meets danger. Warna tapi tetap gelap.",
+    desc: "Utility meets danger. Color that stays dark.",
     pieces: 5,
     available: true,
     accent: "#FF2A2A",
