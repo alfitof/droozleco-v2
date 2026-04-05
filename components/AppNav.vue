@@ -3,7 +3,6 @@
     ref="navbar"
     class="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-5 flex items-center justify-between transition-all duration-300"
   >
-    <!-- Logo -->
     <div class="flex items-center gap-3">
       <span class="font-display text-2xl text-drz-white tracking-widest"
         >DROOZLE.CO</span
@@ -14,23 +13,24 @@
       >
     </div>
 
-    <!-- Nav Links -->
     <ul
       class="hidden md:flex items-center gap-10 font-mono text-xs tracking-widest uppercase text-drz-white"
     >
-      <li v-for="link in links" :key="link">
-        <a href="#" class="relative group">
-          <span>{{ link }}</span>
+      <li v-for="link in links" :key="link.label">
+        <NuxtLink
+          :to="link.to"
+          class="relative group"
+          active-class="text-drz-lime"
+        >
+          <span>{{ link.label }}</span>
           <span
             class="absolute -bottom-1 left-0 w-0 h-px bg-drz-lime transition-all duration-300 group-hover:w-full"
           ></span>
-        </a>
+        </NuxtLink>
       </li>
     </ul>
 
-    <!-- Right side -->
     <div class="flex items-center gap-5">
-      <!-- Search -->
       <button
         class="hidden md:flex items-center text-drz-white hover:text-drz-lime transition-colors"
         aria-label="Search"
@@ -51,8 +51,8 @@
         </svg>
       </button>
 
-      <!-- Cart Icon with badge -->
-      <button
+      <NuxtLink
+        to="/cart"
         class="relative flex items-center text-drz-white hover:text-drz-lime transition-colors"
         aria-label="Cart"
       >
@@ -71,15 +71,13 @@
           <line x1="3" y1="6" x2="21" y2="6" />
           <path d="M16 10a4 4 0 01-8 0" />
         </svg>
-        <!-- Badge -->
         <span
           class="absolute -top-2 -right-2.5 w-4 h-4 bg-drz-lime text-drz-black font-mono text-[9px] font-bold flex items-center justify-center rounded-full leading-none"
         >
-          3
+          {{ totalQty }}
         </span>
-      </button>
+      </NuxtLink>
 
-      <!-- Mobile hamburger -->
       <button
         class="md:hidden flex flex-col gap-1.5 ml-1"
         @click="menuOpen = !menuOpen"
@@ -100,7 +98,6 @@
       </button>
     </div>
 
-    <!-- Mobile Full Screen Menu -->
     <div
       class="fixed inset-0 bg-drz-black z-40 flex flex-col justify-center items-center gap-8 transition-all duration-500"
       :class="
@@ -121,7 +118,6 @@
         </li>
       </ul>
 
-      <!-- Mobile menu bottom row -->
       <div class="flex items-center gap-6 mt-4">
         <button
           class="flex items-center gap-2 text-drz-muted hover:text-drz-lime transition-colors font-mono text-xs uppercase tracking-widest"
@@ -175,8 +171,16 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useCart } from "~/composables/useCart.ts";
+const { totalQty } = useCart();
 
-const links = ["New Drops", "Collections", "Lookbook", "About", "Stockists"];
+const links = [
+  { label: "New Drops", to: "/shop" },
+  { label: "Collections", to: "/collections" },
+  { label: "Lookbook", to: "/lookbook" },
+  { label: "About", to: "/about" },
+  { label: "Stockists", to: "/stockists" },
+];
 const menuOpen = ref(false);
 const navbar = ref(null);
 

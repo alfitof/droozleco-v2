@@ -1,6 +1,5 @@
 <template>
   <div class="relative py-4 bg-drz-lime overflow-hidden border-y-0">
-    <!-- Skew strips -->
     <div class="flex overflow-hidden">
       <div class="marquee-track">
         <span

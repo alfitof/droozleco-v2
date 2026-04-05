@@ -1,6 +1,5 @@
 <template>
   <section ref="sectionRef" class="py-24 px-6 md:px-12 bg-drz-black">
-    <!-- Section Header -->
     <div class="flex items-end justify-between mb-16">
       <div>
         <p
@@ -26,7 +25,6 @@
       </a>
     </div>
 
-    <!-- Product Grid -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
       <div
         v-for="(product, index) in products"
@@ -36,7 +34,6 @@
         :class="index === 0 ? 'md:col-span-2 md:row-span-2' : ''"
       >
         <div class="relative overflow-hidden bg-drz-gray group">
-          <!-- Image -->
           <img
             :src="product.image"
             :alt="product.name"
@@ -44,7 +41,6 @@
             :class="index === 0 ? 'aspect-[3/4]' : 'aspect-square'"
           />
 
-          <!-- Overlay -->
           <div
             class="product-overlay absolute inset-0 bg-drz-black/70 flex flex-col items-center justify-center gap-4"
           >
@@ -60,7 +56,6 @@
             </button>
           </div>
 
-          <!-- Badges -->
           <div class="absolute top-3 left-3 flex flex-col gap-2">
             <span
               v-if="product.badge"
@@ -76,7 +71,6 @@
           </div>
         </div>
 
-        <!-- Product Info -->
         <div class="mt-3 flex items-start justify-between">
           <div>
             <p
@@ -95,7 +89,6 @@
       </div>
     </div>
 
-    <!-- Mobile View All -->
     <div class="mt-10 text-center md:hidden">
       <a
         href="#"

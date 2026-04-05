@@ -3,7 +3,6 @@
     ref="heroRef"
     class="relative min-h-screen flex flex-col overflow-hidden bg-drz-black"
   >
-    <!-- Background Image -->
     <div class="absolute inset-0 z-0">
       <img
         src="https://placehold.co/1920x1080/0a0a0a/1a1a1a?text=."
@@ -15,9 +14,7 @@
       ></div>
     </div>
 
-    <!-- ─── MOBILE LAYOUT (flex-col, stacked) ─── -->
     <div class="relative z-10 flex flex-col min-h-screen md:hidden">
-      <!-- Mobile: Product image on top -->
       <div
         ref="floatImgMobile"
         class="relative w-full pt-24 px-6 flex justify-center"
@@ -28,7 +25,7 @@
             alt="Drop 001"
             class="w-full object-cover"
           />
-          <!-- Sticker -->
+
           <div
             class="absolute -top-4 -right-4 w-16 h-16 bg-drz-lime rounded-full flex items-center justify-center rotate-12 z-10"
           >
@@ -38,7 +35,7 @@
               NEW<br />DROP<br />SS25
             </span>
           </div>
-          <!-- Price tag -->
+
           <div
             class="absolute bottom-3 left-3 bg-drz-black border border-drz-lime px-3 py-1.5"
           >
@@ -47,7 +44,6 @@
         </div>
       </div>
 
-      <!-- Mobile: Text content below image -->
       <div class="flex-1 flex flex-col justify-end px-6 pb-12 pt-8">
         <div class="flex items-center gap-3 mb-4">
           <span class="w-6 h-px bg-drz-lime"></span>
@@ -172,12 +168,10 @@
       </div>
     </div>
 
-    <!-- Bottom gradient line -->
     <div
       class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-drz-lime/40 to-transparent z-20"
     ></div>
 
-    <!-- Corner coordinates (desktop only) -->
     <div
       class="absolute bottom-8 left-12 font-mono text-drz-muted text-[10px] tracking-wider z-20 hidden md:block"
     >
