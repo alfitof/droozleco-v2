@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.css"],
   app: {
     head: {
-      title: "DROOZLE.CO — Drop Culture. Street Ritual.",
+      title: "Droozle.co — Drop Culture. Street Ritual.",
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
