@@ -4,7 +4,7 @@
 
     <!-- Hero: pt-24 agar tidak nabrak nav -->
     <div
-      class="relative min-h-[75vh] flex flex-col justify-end overflow-hidden pt-24"
+      class="relative min-h-[65vh] md:min-h-[75vh] flex flex-col justify-end overflow-hidden pt-24"
     >
       <img
         src="https://placehold.co/1400x800/0a0a0a/1a1a1a?text=."
