@@ -193,11 +193,12 @@
               </button>
             </div>
 
-            <button
-              class="w-full bg-drz-lime text-drz-black font-mono text-xs uppercase tracking-widest py-4 font-bold hover:bg-drz-white transition-colors mb-3"
+            <NuxtLink
+              to="/checkout"
+              class="block w-full bg-drz-lime text-drz-black font-mono text-xs uppercase tracking-widest py-4 font-bold hover:bg-drz-white transition-colors mb-3 text-center"
             >
               Checkout →
-            </button>
+            </NuxtLink>
             <NuxtLink
               to="/shop"
               class="block w-full border border-drz-white/20 text-drz-muted font-mono text-xs uppercase tracking-widest py-4 text-center hover:border-drz-white hover:text-drz-white transition-colors"

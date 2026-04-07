@@ -81,11 +81,7 @@ body:has(button:hover) .cursor-ring {
 @media (hover: none) and (pointer: coarse) {
   .cursor-dot,
   .cursor-ring {
-    opacity: 0;
-    transition:
-      opacity 0.3s ease,
-      width 0.2s ease,
-      height 0.2s ease;
+    display: none !important;
   }
 }
 
