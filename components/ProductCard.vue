@@ -11,7 +11,6 @@
         :class="tall ? 'aspect-[3/4]' : 'aspect-square'"
       />
 
-      <!-- Hover overlay — pointer-events hanya aktif saat visible -->
       <div
         class="absolute inset-0 bg-drz-black/70 flex flex-col items-center justify-center gap-2 md:gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-3 pointer-events-none group-hover:pointer-events-auto"
       >
@@ -28,7 +27,6 @@
         </span>
       </div>
 
-      <!-- Badge -->
       <div class="absolute top-3 left-3 z-10">
         <span
           v-if="product.badge"
@@ -45,7 +43,6 @@
         >
       </div>
 
-      <!-- Wishlist — z-20 agar selalu di atas overlay, pointer-events-auto selalu -->
       <button
         @click.prevent="toggleWish"
         class="absolute top-3 right-3 z-20 w-8 h-8 flex items-center justify-center border transition-all duration-300"
@@ -72,7 +69,6 @@
       </button>
     </div>
 
-    <!-- Info -->
     <div class="mt-3 flex items-start justify-between gap-2">
       <div class="min-w-0">
         <p

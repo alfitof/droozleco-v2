@@ -1,4 +1,3 @@
-<!-- Ganti seluruh file ProductGrid.vue -->
 <template>
   <section ref="sectionRef" class="py-24 px-6 md:px-12 bg-drz-black">
     <div class="flex items-end justify-between mb-16">
@@ -42,7 +41,6 @@
             :class="index === 0 ? 'aspect-[3/4]' : 'aspect-square'"
           />
 
-          <!-- Hover overlay -->
           <div
             class="product-overlay absolute inset-0 bg-drz-black/70 flex flex-col items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
           >
@@ -60,7 +58,6 @@
             </NuxtLink>
           </div>
 
-          <!-- Badge -->
           <div class="absolute top-3 left-3">
             <span
               v-if="product.badge"
@@ -74,7 +71,6 @@
             >
           </div>
 
-          <!-- Wishlist button -->
           <button
             @click.prevent="toggleWish(product.id)"
             class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center border transition-all duration-300"

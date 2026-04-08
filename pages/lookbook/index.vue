@@ -9,7 +9,6 @@
       bgText="LOOK"
     />
 
-    <!-- Season tabs -->
     <div
       class="px-6 md:px-12 pt-10 pb-6 flex items-center gap-4 border-b border-drz-white/10"
     >
@@ -28,9 +27,7 @@
       </button>
     </div>
 
-    <!-- Editorial Grid -->
     <div class="px-6 md:px-12 py-12">
-      <!-- Feature story -->
       <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
         <div
           class="md:col-span-3 relative group cursor-pointer overflow-hidden"
@@ -105,7 +102,6 @@
         </div>
       </div>
 
-      <!-- 3-col strip -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
         <div
           v-for="look in middleLooks"
@@ -146,7 +142,6 @@
         </div>
       </div>
 
-      <!-- Full width banner -->
       <div class="relative overflow-hidden group cursor-pointer">
         <img
           src="https://placehold.co/1400x500/0a0a0a/C8FF00?text=CHAPTER+07+—+THE+RITUAL"
@@ -171,7 +166,6 @@
         </div>
       </div>
 
-      <!-- BTS -->
       <div
         class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center border-t border-drz-white/10 pt-16"
       >

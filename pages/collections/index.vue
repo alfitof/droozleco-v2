@@ -10,7 +10,6 @@
     />
 
     <div class="px-6 md:px-12 py-16">
-      <!-- Featured collection -->
       <div class="relative overflow-hidden group cursor-pointer mb-4">
         <img
           src="https://placehold.co/1400x600/0d0d0d/C8FF00?text=SS25+—+RITUAL"
@@ -55,7 +54,6 @@
         </div>
       </div>
 
-      <!-- Grid collections -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
         <div
           v-for="col in collections"
@@ -108,7 +106,6 @@
         </div>
       </div>
 
-      <!-- Archive row -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div
           v-for="col in archiveCollections"

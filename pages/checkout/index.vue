@@ -27,7 +27,6 @@
         >
       </div>
 
-      <!-- Step indicator -->
       <div class="flex items-center gap-0 mb-14 max-w-md">
         <div
           v-for="(step, i) in steps"
@@ -72,16 +71,13 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-        <!-- Left: Form -->
         <div class="lg:col-span-2">
-          <!-- STEP 0: Contact & Shipping -->
           <div v-if="currentStep === 0">
             <h2 class="font-display text-3xl text-drz-white mb-8">
               SHIPPING INFO
             </h2>
 
             <div class="flex flex-col gap-5">
-              <!-- Contact -->
               <div>
                 <p
                   class="font-mono text-drz-muted text-[10px] uppercase tracking-widest mb-4"
@@ -173,7 +169,6 @@
                 >
               </div>
 
-              <!-- Shipping address -->
               <div class="pt-4 border-t border-drz-white/10">
                 <p
                   class="font-mono text-drz-muted text-[10px] uppercase tracking-widest mb-4"
@@ -279,7 +274,6 @@
                 </div>
               </div>
 
-              <!-- Shipping method -->
               <div class="pt-4 border-t border-drz-white/10">
                 <p
                   class="font-mono text-drz-muted text-[10px] uppercase tracking-widest mb-4"
@@ -344,11 +338,9 @@
             </button>
           </div>
 
-          <!-- STEP 1: Payment -->
           <div v-if="currentStep === 1">
             <h2 class="font-display text-3xl text-drz-white mb-8">PAYMENT</h2>
 
-            <!-- Shipping summary -->
             <div
               class="border border-drz-white/10 p-4 mb-8 flex items-center justify-between"
             >
@@ -371,7 +363,6 @@
               </button>
             </div>
 
-            <!-- Payment methods -->
             <div class="flex flex-col gap-3 mb-8">
               <label
                 v-for="method in paymentMethods"
@@ -383,7 +374,6 @@
                     : 'border-drz-white/15 hover:border-drz-white/30'
                 "
               >
-                <!-- Method header -->
                 <div
                   class="flex items-center gap-3 p-4"
                   @click="form.payment = method.id"
@@ -421,7 +411,6 @@
                   </div>
                 </div>
 
-                <!-- Bank transfer details — shown when selected -->
                 <Transition name="accordion">
                   <div
                     v-if="
@@ -464,7 +453,6 @@
                   </div>
                 </Transition>
 
-                <!-- E-wallet details -->
                 <Transition name="accordion">
                   <div
                     v-if="form.payment === method.id && method.id === 'ewallet'"
@@ -500,7 +488,6 @@
                   </div>
                 </Transition>
 
-                <!-- COD info -->
                 <Transition name="accordion">
                   <div
                     v-if="form.payment === method.id && method.id === 'cod'"
@@ -532,13 +519,11 @@
             </div>
           </div>
 
-          <!-- STEP 2: Review & Place Order -->
           <div v-if="currentStep === 2">
             <h2 class="font-display text-3xl text-drz-white mb-8">
               REVIEW ORDER
             </h2>
 
-            <!-- Items -->
             <div
               class="flex flex-col divide-y divide-drz-white/10 mb-8 border-t border-drz-white/10"
             >
@@ -571,7 +556,6 @@
               </div>
             </div>
 
-            <!-- Summary blocks -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
               <div class="border border-drz-white/10 p-4">
                 <p
@@ -616,7 +600,6 @@
               </div>
             </div>
 
-            <!-- Terms -->
             <label class="flex items-start gap-3 mb-8 cursor-pointer group">
               <div
                 class="w-5 h-5 border shrink-0 mt-0.5 flex items-center justify-center transition-all"
@@ -675,91 +658,141 @@
             </div>
           </div>
 
-          <!-- STEP 3: Confirmation -->
-          <div v-if="currentStep === 3" class="py-8">
-            <div class="flex flex-col items-start gap-6">
+          <div v-if="currentStep === 3" class="py-4 md:py-8">
+            <div class="flex items-center gap-4 mb-10">
               <div
-                class="w-14 h-14 bg-drz-lime flex items-center justify-center"
+                class="w-12 h-12 bg-drz-lime flex items-center justify-center shrink-0"
               >
                 <svg
-                  width="24"
-                  height="24"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="#050505"
-                  stroke-width="2.5"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
                 >
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
               </div>
               <div>
                 <p
-                  class="font-mono text-drz-lime text-[10px] uppercase tracking-widest mb-2"
+                  class="font-mono text-drz-lime text-[10px] uppercase tracking-widest"
                 >
                   Order Placed
                 </p>
-                <h2
-                  class="font-display text-4xl md:text-5xl text-drz-white leading-none mb-4"
-                >
-                  YOU'RE<br />LOCKED IN.
-                </h2>
                 <p
-                  class="font-body text-drz-muted text-sm leading-relaxed max-w-sm"
+                  class="font-mono text-drz-muted text-[10px] uppercase tracking-widest mt-0.5"
                 >
-                  Order
-                  <span class="font-mono text-drz-white"
-                    >#DRZ-{{ orderNumber }}</span
-                  >
-                  confirmed. A confirmation email has been sent to
-                  <span class="text-drz-white">{{ form.email }}</span
-                  >.
+                  #DRZ-{{ orderNumber }}
                 </p>
               </div>
+            </div>
 
-              <div class="border border-drz-white/10 p-5 w-full max-w-sm">
-                <p
-                  class="font-mono text-drz-muted text-[9px] uppercase tracking-widest mb-3"
+            <h2
+              class="font-display text-drz-white leading-none mb-6"
+              style="font-size: clamp(3.5rem, 10vw, 8rem)"
+            >
+              YOU'RE<br /><span class="text-drz-lime">LOCKED</span><br />IN.
+            </h2>
+
+            <p
+              class="font-body text-drz-muted text-sm leading-relaxed mb-10 max-w-sm"
+            >
+              A confirmation email has been sent to
+              <span class="font-mono text-drz-white">{{ form.email }}</span
+              >. Keep it somewhere safe.
+            </p>
+
+            <div class="w-16 h-px bg-drz-lime mb-10"></div>
+
+            <div class="mb-10">
+              <p
+                class="font-mono text-drz-muted text-[10px] uppercase tracking-widest mb-5 flex items-center gap-3"
+              >
+                <span class="w-5 h-px bg-drz-muted inline-block"></span>
+                What's Next
+              </p>
+              <ul class="flex flex-col gap-4">
+                <li
+                  v-for="(step, i) in nextSteps"
+                  :key="i"
+                  class="flex items-start gap-4 group"
                 >
-                  What's Next
-                </p>
-                <ul class="flex flex-col gap-2">
-                  <li
-                    v-for="step in nextSteps"
-                    :key="step"
-                    class="flex items-start gap-2 font-body text-drz-muted text-sm"
+                  <span
+                    class="font-mono text-[10px] text-drz-black bg-drz-lime w-5 h-5 flex items-center justify-center shrink-0 mt-0.5 font-bold"
+                    >{{ i + 1 }}</span
                   >
-                    <span class="text-drz-lime mt-0.5 shrink-0">—</span>
+                  <span
+                    class="font-body text-drz-muted text-sm leading-relaxed group-hover:text-drz-white transition-colors duration-200"
+                  >
                     {{ step }}
-                  </li>
-                </ul>
-              </div>
+                  </span>
+                </li>
+              </ul>
+            </div>
 
-              <div class="flex gap-3 flex-wrap">
-                <NuxtLink
-                  to="/shop"
-                  class="bg-drz-lime text-drz-black font-mono text-xs uppercase tracking-widest px-8 py-4 font-bold hover:bg-drz-white transition-colors"
-                >
-                  Continue Shopping →
-                </NuxtLink>
-                <NuxtLink
-                  to="/"
-                  class="border border-drz-white/20 text-drz-muted font-mono text-xs uppercase tracking-widest px-8 py-4 hover:border-drz-white hover:text-drz-white transition-colors"
-                >
-                  Back to Home
-                </NuxtLink>
+            <div class="border border-drz-white/10 mb-10">
+              <div class="grid grid-cols-3 divide-x divide-drz-white/10">
+                <div class="px-4 py-4">
+                  <p
+                    class="font-mono text-drz-muted text-[9px] uppercase tracking-widest mb-1"
+                  >
+                    Order
+                  </p>
+                  <p class="font-mono text-drz-white text-xs">
+                    #DRZ-{{ orderNumber }}
+                  </p>
+                </div>
+                <div class="px-4 py-4">
+                  <p
+                    class="font-mono text-drz-muted text-[9px] uppercase tracking-widest mb-1"
+                  >
+                    Payment
+                  </p>
+                  <p class="font-mono text-drz-white text-xs truncate">
+                    {{
+                      paymentMethods.find((m) => m.id === form.payment)?.name
+                    }}
+                  </p>
+                </div>
+                <div class="px-4 py-4">
+                  <p
+                    class="font-mono text-drz-muted text-[9px] uppercase tracking-widest mb-1"
+                  >
+                    Total
+                  </p>
+                  <p class="font-mono text-drz-lime text-xs font-bold">
+                    {{ formatRp(total + shippingCost) }}
+                  </p>
+                </div>
               </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+              <NuxtLink
+                to="/shop"
+                class="bg-drz-lime text-drz-black font-mono text-xs uppercase tracking-widest px-8 py-4 font-bold hover:bg-drz-white transition-colors text-center"
+              >
+                Continue Shopping →
+              </NuxtLink>
+              <NuxtLink
+                to="/"
+                class="border border-drz-white/20 text-drz-muted font-mono text-xs uppercase tracking-widest px-8 py-4 hover:border-drz-white hover:text-drz-white transition-colors text-center"
+              >
+                Back to Home
+              </NuxtLink>
             </div>
           </div>
         </div>
 
-        <!-- Right: Order Summary (sticky, hidden on step 3) -->
         <div v-if="currentStep < 3" class="lg:col-span-1">
           <div class="border border-drz-white/10 p-6 sticky top-28">
             <h3 class="font-display text-xl text-drz-white mb-5">
               ORDER SUMMARY
             </h3>
 
-            <!-- Items -->
             <div
               class="flex flex-col gap-3 mb-5 max-h-[13rem] overflow-y-auto pt-[0.5rem]"
             >

@@ -3,7 +3,6 @@
     <AppNav />
 
     <div class="pt-28 px-6 md:px-12 pb-24">
-      <!-- Breadcrumb -->
       <div
         class="flex items-center gap-2 font-mono text-[10px] text-drz-muted uppercase tracking-widest mb-12 pt-4"
       >
@@ -18,11 +17,8 @@
         <span class="text-drz-white">{{ product.name }}</span>
       </div>
 
-      <!-- Product Layout -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 pb-24">
-        <!-- Left: Images -->
         <div class="flex gap-3">
-          <!-- Thumbnails -->
           <div class="hidden md:flex flex-col gap-2 w-16 shrink-0">
             <button
               v-for="(img, i) in product.images"
@@ -43,7 +39,6 @@
             </button>
           </div>
 
-          <!-- Main image -->
           <div class="flex-1 relative overflow-hidden group">
             <img
               :src="product.images[activeImg]"
@@ -63,7 +58,6 @@
               {{ product.badge }}
             </div>
 
-            <!-- Image nav arrows -->
             <button
               @click="
                 activeImg =
@@ -83,7 +77,6 @@
           </div>
         </div>
 
-        <!-- Right: Product Info -->
         <div class="flex flex-col">
           <p
             class="font-mono text-drz-muted text-[10px] uppercase tracking-widest mb-2"
@@ -96,7 +89,6 @@
             {{ product.name }}
           </h1>
 
-          <!-- Price -->
           <div class="flex items-center gap-4 mt-4 mb-8">
             <span class="font-mono text-drz-lime text-2xl">{{
               formatRp(product.price)
@@ -110,14 +102,13 @@
 
           <div class="w-full h-px bg-drz-white/10 mb-8"></div>
 
-          <!-- Size Selector -->
           <div class="mb-6">
             <div class="flex items-center justify-between mb-3">
               <span
                 class="font-mono text-drz-white text-xs uppercase tracking-widest"
                 >Size</span
               >
-              <!-- Size Guide button — functional -->
+
               <button
                 @click="sizeGuideOpen = true"
                 class="font-mono text-drz-muted text-[10px] uppercase tracking-widest hover:text-drz-lime transition-colors flex items-center gap-1"
@@ -160,7 +151,6 @@
             </p>
           </div>
 
-          <!-- Qty -->
           <div class="flex items-center gap-4 mb-8">
             <span
               class="font-mono text-drz-white text-xs uppercase tracking-widest"
@@ -186,7 +176,6 @@
             </div>
           </div>
 
-          <!-- Add to Cart + Wishlist -->
           <div class="flex gap-3 mb-4">
             <button
               @click="addToCart"
@@ -195,7 +184,6 @@
               {{ product.badge === "SOLD OUT" ? "Notify Me" : "Add to Cart" }}
             </button>
 
-            <!-- Wishlist button — functional toggle -->
             <button
               @click="wished = !wished"
               class="w-14 border flex items-center justify-center transition-all duration-300"
@@ -222,7 +210,6 @@
             </button>
           </div>
 
-          <!-- Wishlist feedback -->
           <Transition name="slide-up">
             <p
               v-if="wished"
@@ -244,7 +231,6 @@
             </p>
           </Transition>
 
-          <!-- Add to cart success -->
           <Transition name="slide-up">
             <div
               v-if="added"
@@ -266,7 +252,6 @@
 
           <div class="w-full h-px bg-drz-white/10 mb-8"></div>
 
-          <!-- Accordion -->
           <div class="flex flex-col divide-y divide-drz-white/10">
             <div v-for="acc in accordions" :key="acc.title" class="py-4">
               <button
@@ -295,7 +280,6 @@
         </div>
       </div>
 
-      <!-- Related Products -->
       <div class="pb-24 border-t border-drz-white/10 pt-16">
         <div class="flex items-center gap-3 mb-10">
           <span class="w-6 h-px bg-drz-lime"></span>
@@ -310,7 +294,6 @@
       </div>
     </div>
 
-    <!-- ── Size Guide Modal ──────────────────────────── -->
     <Transition name="modal">
       <div
         v-if="sizeGuideOpen"
@@ -325,7 +308,6 @@
             border: 1px solid rgba(255, 255, 255, 0.12);
           "
         >
-          <!-- Modal header -->
           <div
             class="flex items-center justify-between px-6 md:px-8 py-5 border-b border-drz-white/10 sticky top-0"
             style="background-color: #0d0d0d"
@@ -357,9 +339,7 @@
             </button>
           </div>
 
-          <!-- Modal body -->
           <div class="px-6 md:px-8 py-8">
-            <!-- Unit toggle -->
             <div
               class="flex items-center gap-1 mb-8 border border-drz-white/15 w-fit"
             >
@@ -387,7 +367,6 @@
               </button>
             </div>
 
-            <!-- How to measure -->
             <div
               class="mb-8 p-4 border border-drz-white/10 bg-drz-white/[0.02]"
             >
@@ -408,7 +387,6 @@
               </ul>
             </div>
 
-            <!-- Size table -->
             <div class="overflow-x-auto">
               <table class="w-full min-w-[400px]">
                 <thead>
@@ -463,7 +441,6 @@
               </table>
             </div>
 
-            <!-- Fit note -->
             <div class="mt-8 pt-6 border-t border-drz-white/10">
               <p
                 class="font-mono text-drz-muted text-[10px] uppercase tracking-widest mb-2"

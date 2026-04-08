@@ -14,7 +14,6 @@
       ></div>
     </div>
 
-    <!-- MOBILE LAYOUT -->
     <div class="relative z-10 flex flex-col min-h-screen md:hidden">
       <div
         ref="floatImgMobile"
@@ -81,7 +80,6 @@
       </div>
     </div>
 
-    <!-- DESKTOP LAYOUT -->
     <div class="relative z-10 hidden md:flex min-h-screen">
       <div class="flex flex-col justify-end px-12 pb-24 w-1/2 xl:w-7/12">
         <div ref="labelRef" class="flex items-center gap-3 mb-6">

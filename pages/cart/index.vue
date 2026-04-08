@@ -30,11 +30,9 @@
       </div>
 
       <div v-else class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-        <!-- Cart Items -->
         <div class="lg:col-span-2 flex flex-col divide-y divide-drz-white/10">
           <TransitionGroup name="cart-item" tag="div">
             <div v-for="item in items" :key="item.id" class="py-6 flex gap-5">
-              <!-- Image -->
               <NuxtLink :to="`/product/${item.id}`" class="shrink-0">
                 <img
                   :src="item.image"
@@ -43,7 +41,6 @@
                 />
               </NuxtLink>
 
-              <!-- Info -->
               <div class="flex-1 min-w-0">
                 <div class="flex items-start justify-between gap-4">
                   <div>
@@ -80,7 +77,6 @@
                   </button>
                 </div>
 
-                <!-- Qty + Price row -->
                 <div class="flex items-center justify-between mt-4">
                   <div class="flex items-center border border-drz-white/20">
                     <button
@@ -109,7 +105,6 @@
           </TransitionGroup>
         </div>
 
-        <!-- Order Summary -->
         <div class="lg:col-span-1">
           <div class="border border-drz-white/10 p-6 sticky top-28">
             <h3 class="font-display text-2xl text-drz-white mb-6">
@@ -133,7 +128,6 @@
               </div>
             </div>
 
-            <!-- Free shipping bar -->
             <div v-if="total < 500000" class="mb-6">
               <div
                 class="flex justify-between font-mono text-[10px] text-drz-muted uppercase tracking-widest mb-2"
@@ -178,7 +172,6 @@
               </span>
             </div>
 
-            <!-- Promo code -->
             <div class="flex gap-0 mb-6">
               <input
                 type="text"
@@ -206,7 +199,6 @@
               Continue Shopping
             </NuxtLink>
 
-            <!-- Payment icons -->
             <div class="flex items-center justify-center gap-3 mt-6">
               <span
                 v-for="pay in ['VISA', 'GoPay', 'OVO', 'QRIS']"

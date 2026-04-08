@@ -10,7 +10,6 @@
     />
 
     <div class="px-6 md:px-12 py-16">
-      <!-- Region filter -->
       <div class="flex items-center gap-2 flex-wrap mb-12">
         <button
           v-for="region in regions"
@@ -27,7 +26,6 @@
         </button>
       </div>
 
-      <!-- Stockist list -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div
           v-for="store in filteredStores"
@@ -101,7 +99,6 @@
         </div>
       </div>
 
-      <!-- Empty state if filter yields nothing -->
       <div v-if="filteredStores.length === 0" class="py-24 text-center">
         <p class="font-display text-5xl text-drz-white/10 mb-4">NONE YET.</p>
         <p class="font-mono text-drz-muted text-xs uppercase tracking-widest">

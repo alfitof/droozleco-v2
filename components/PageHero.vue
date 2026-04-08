@@ -2,7 +2,6 @@
   <div
     class="relative pt-32 pb-16 px-6 md:px-12 overflow-hidden border-b border-drz-white/10"
   >
-    <!-- bg label -->
     <div
       class="absolute inset-0 flex items-end pb-4 pointer-events-none overflow-hidden"
     >

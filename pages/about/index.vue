@@ -2,7 +2,6 @@
   <main class="bg-drz-black min-h-screen">
     <AppNav />
 
-    <!-- Hero: pt-24 agar tidak nabrak nav -->
     <div
       class="relative min-h-[65vh] md:min-h-[75vh] flex flex-col justify-end overflow-hidden pt-24"
     >
@@ -30,7 +29,6 @@
       </div>
     </div>
 
-    <!-- Manifesto -->
     <div class="px-6 md:px-12 py-24 border-b border-drz-white/10">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <div>
@@ -68,7 +66,6 @@
       </div>
     </div>
 
-    <!-- Numbers — centered both PC and mobile -->
     <div class="px-6 md:px-12 py-20 border-b border-drz-white/10">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         <div v-for="stat in stats" :key="stat.label">
@@ -87,7 +84,6 @@
       </div>
     </div>
 
-    <!-- Values -->
     <div class="px-6 md:px-12 py-24 border-b border-drz-white/10">
       <p
         class="font-mono text-drz-lime text-[10px] uppercase tracking-widest mb-12 flex items-center gap-3"
@@ -119,7 +115,6 @@
       </div>
     </div>
 
-    <!-- The Crew — 1 member, easily expandable -->
     <div class="px-6 md:px-12 py-24 border-b border-drz-white/10">
       <p
         class="font-mono text-drz-lime text-[10px] uppercase tracking-widest mb-12 flex items-center gap-3"
@@ -150,7 +145,6 @@
       </div>
     </div>
 
-    <!-- CTA -->
     <div class="px-6 md:px-12 py-24 text-center">
       <p
         class="font-mono text-drz-muted text-[10px] uppercase tracking-widest mb-6"

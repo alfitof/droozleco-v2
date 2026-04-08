@@ -9,7 +9,6 @@
       bgText="SHOP"
     />
 
-    <!-- Filter Bar -->
     <div
       class="sticky top-[72px] z-30 bg-drz-black/95 backdrop-blur-sm border-b border-drz-white/10 px-6 md:px-12 py-4 flex items-center justify-between gap-4"
     >
@@ -44,7 +43,6 @@
           <option value="price-desc">Price ↓</option>
         </select>
 
-        <!-- Grid toggle -->
         <div class="hidden md:flex border border-drz-white/15">
           <button
             @click="gridCols = 3"
@@ -95,7 +93,6 @@
       </div>
     </div>
 
-    <!-- Product Grid -->
     <div class="px-6 md:px-12 py-12">
       <div
         class="grid gap-4 md:gap-6 transition-all"
@@ -112,7 +109,6 @@
         />
       </div>
 
-      <!-- Empty state -->
       <div v-if="filteredProducts.length === 0" class="py-32 text-center">
         <p class="font-display text-6xl text-drz-white/10 mb-4">EMPTY.</p>
         <p class="font-mono text-drz-muted text-xs uppercase tracking-widest">
@@ -121,7 +117,6 @@
       </div>
     </div>
 
-    <!-- Quick Add Toast -->
     <Transition name="toast">
       <div
         v-if="toastVisible"

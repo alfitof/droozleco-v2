@@ -1,11 +1,9 @@
 <template>
-  <!-- Nav wrapper — hanya setinggi navbar, bukan fullscreen -->
   <nav
     ref="navbar"
     class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
   >
     <div class="px-6 md:px-12 py-5 flex items-center justify-between gap-4">
-      <!-- Logo -->
       <div class="flex items-center gap-3 relative z-50 shrink-0">
         <NuxtLink
           to="/"
@@ -19,7 +17,6 @@
         >
       </div>
 
-      <!-- Desktop Nav Links -->
       <ul
         class="hidden md:flex items-center gap-10 font-mono text-xs tracking-widest uppercase text-drz-white"
       >
@@ -37,9 +34,7 @@
         </li>
       </ul>
 
-      <!-- Right side -->
       <div class="flex items-center gap-4 shrink-0 relative z-50">
-        <!-- Search inline — desktop only -->
         <div class="hidden md:flex items-center">
           <Transition name="search-expand">
             <div
@@ -98,7 +93,6 @@
           </button>
         </div>
 
-        <!-- Cart -->
         <NuxtLink
           to="/cart"
           class="relative flex items-center text-drz-white hover:text-drz-lime transition-colors"
@@ -126,7 +120,6 @@
           </span>
         </NuxtLink>
 
-        <!-- Hamburger — semua span w-6 sama lebar -->
         <button
           class="md:hidden flex flex-col justify-center gap-[5px] w-6 h-6"
           @click="menuOpen = !menuOpen"
@@ -148,7 +141,6 @@
       </div>
     </div>
 
-    <!-- Search Results Dropdown -->
     <Transition name="search-results">
       <div
         v-if="searchOpen && searchQuery.length > 1"
@@ -198,14 +190,12 @@
     </Transition>
   </nav>
 
-  <!-- ✅ Mobile menu DI LUAR <nav> — tidak terpengaruh scroll class apapun -->
   <Transition name="mobile-menu">
     <div
       v-if="menuOpen"
       class="fixed inset-0 z-40 flex flex-col justify-center items-center md:hidden"
       style="background-color: #050505"
     >
-      <!-- Mobile search -->
       <div class="absolute top-[5.5rem] left-6 right-6">
         <div class="flex items-center gap-3 border-b border-drz-white/15 pb-4">
           <svg
@@ -248,7 +238,6 @@
           </button>
         </div>
 
-        <!-- Results — solid background, border, shadow -->
         <div
           v-if="searchQuery.length > 1"
           class="mt-2 max-h-64 overflow-y-auto flex flex-col divide-y divide-drz-white/10 border border-drz-white/10"
@@ -303,7 +292,6 @@
         </div>
       </div>
 
-      <!-- Nav links -->
       <ul class="flex flex-col items-center gap-7 mt-16">
         <li v-for="link in links" :key="link.label">
           <NuxtLink
@@ -325,7 +313,6 @@
     </div>
   </Transition>
 
-  <!-- Backdrop close search -->
   <div v-if="searchOpen" class="fixed inset-0 z-40" @click="closeSearch"></div>
 </template>
 
